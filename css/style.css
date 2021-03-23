@@ -20,6 +20,7 @@ body {
 .col1 {
   width: 30%;
   float: left;
+  border-right: 0.05em solid grey;
 }
 
 .col2 {
@@ -111,32 +112,66 @@ body {
   padding: 5px;
 }
 
-/* -------------------------- */
+/* sezione lista contatti */
 
 .contacts {
   width: 100%;
   height: 65vh;
   overflow-y: scroll;
+  background-color: white;
 }
+
+.contacts li {
+  list-style: none;
+  padding: 10px;
+  border-top: 0.05em solid lightblue;
+}
+.contacts li img {
+  height: 50px;
+  border-radius: 50px;
+}
+
+/* sezione chat */
 
 .main {
   width: 100%;
-  height: 80vh;
+  height: 70vh;
+  overflow-y: scroll;
+  background-image: url(../img/mine.jpg);
 }
 
-/* eliminare */
-
-.col1 {
-  height: 100%;
-
-  border-right: 0.05em solid grey;
+.chat {
+  width: 100%;
 }
 
-.col2 {
-  height: 100%;
-  background-color: yellow;
+.message {
+  max-width: 40%;
 }
 
-.contacts {
-  background-color: red;
+.sent {
+  background-color: lightgreen;
+}
+
+.received {
+  background-color: white;
+}
+
+/* sezione per scrivere messaggi */
+
+.type_text {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f3eeea;
+}
+
+.type_text i {
+  font-size: 1.5em;
+  color: #6b7376;
+}
+
+.type_text input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 5px;
 }

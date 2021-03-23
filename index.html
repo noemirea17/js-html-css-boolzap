@@ -8,11 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
     <title>Document</title>
 </head>
 <body>
 
-    <div class="container">
+    <div id="root" class="container">
         <!-- inizio colonna sinistra -->
         <div class="col1">
             <!-- prima sezione -->
@@ -32,7 +34,7 @@
                     <i class="fas fa-ellipsis-v"></i>
                 </divc>
             </section>
-            <!-- seconda sezione -->
+            <!-- sezione volume notifiche -->
             <section class="set_notifications">
                 <i class="fas fa-bell-slash"></i>
                 <div class="text">
@@ -40,13 +42,17 @@
                     <p>Ricevi notifiche desktop</p>
                 </div>
             </section>
-            <!-- terza sezione -->
+            <!-- sezione ricerca contatti -->
             <section class="search">
+                <label for=""><i class="fas fa-search"></i></label>
                 <input type="text" placeholder="cerca o inizia una nuova chat">
 
             </section>
-            <!-- quarta sezione -->
+            <!-- sezione lista contatti -->
             <section class="contacts">
+                <ul>
+                    <li v-for="contact in contacts">{{contact.name}}</li>
+                </ul>
 
             </section>
 
@@ -74,12 +80,22 @@
 
 
             </section>
-            <!-- seconda sezione -->
+            <!-- sezione chat -->
             <section class="main">
+                <div class="chat" id="michele">
+                    <div class="message">
+    
+
+                    </div>
+
+                </div>
 
             </section>
-            <!-- terza sezione -->
+            <!-- sezione per scrivere messaggi -->
             <section class="type_text">
+                <i class="far fa-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio">
+                <i class="fas fa-microphone"></i>
 
             </section>
 
