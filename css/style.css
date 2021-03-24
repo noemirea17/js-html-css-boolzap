@@ -108,9 +108,17 @@ body {
   background-color: white;
 }
 
+label {
+  border: 0.05em solid black;
+  border-right: 0;
+  padding: 4px 4px 3px 4px;
+}
+
 .search input {
   width: 90%;
   padding: 5px;
+  border: 0.05em solid black;
+  border-left: 0;
 }
 
 /* sezione lista contatti */
@@ -153,14 +161,25 @@ body {
 
 .chat {
   width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .message {
-  max-width: 40%;
+  width: 40%;
+  border-radius: 10px;
+  padding: 10px 5px;
+  margin: 10px 80px;
+}
+
+.message p {
+  padding: 5px;
 }
 
 .sent {
   background-color: lightgreen;
+  align-self: flex-end;
 }
 
 .received {
