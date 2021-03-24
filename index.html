@@ -21,10 +21,9 @@
             <section class="upper_nav">
                 <div class="utente">
                     <div class="avatar">
-                        <img src="img/avatar_io.jpg" alt="">
+                        <img :src="'img/avatar' + user.avatar + '.jpg'">
                         <div class="text">
-
-                            <p>Nome Utente</p>
+                            <p >{{user.name}}</p>
                         </div>
                     </div>
                 </div>
@@ -51,7 +50,7 @@
             <!-- sezione lista contatti -->
             <section class="contacts">
                 <ul>
-                    <li v-for="contact in contacts">{{contact.name}}</li>
+                    <li v-for="(contact, index) in contacts" @click="setSelectedConversation(index)" :class="(index == avatarCounter) ? 'active' : null"> <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="">{{contact.name}}</li>
                 </ul>
 
             </section>
@@ -64,9 +63,9 @@
             <section class="upper_nav">
                 <div class="utente">
                     <div class="avatar">
-                        <img src="img/avatar_1.jpg" alt="">
+                        <img :src="'img/avatar' + contacts[avatarCounter].avatar + '.jpg'" alt="">
                         <div class="text">
-                            <p>Michele</p>
+                            <p>{{contacts[avatarCounter].name}}</p>
                             <p>ultimo accesso oggi alle</p>
 
                         </div>
@@ -82,14 +81,11 @@
             </section>
             <!-- sezione chat -->
             <section class="main">
-                <div class="chat" id="michele">
-                    <div class="message">
-    
-
+                <div class="chat">
+                    <div class="message" v-for="message in contacts[avatarCounter].messages" >
+                        <p>{{message.text}}</p>
                     </div>
-
                 </div>
-
             </section>
             <!-- sezione per scrivere messaggi -->
             <section class="type_text">

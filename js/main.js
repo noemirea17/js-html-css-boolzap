@@ -1,12 +1,12 @@
 var app = new Vue({
   el: "#root",
   data: {
-    images: [
-      "../img/avatar_1.jpg",
-      "../img/avatar_2.jpg",
-      "../img/avatar_3.jpg",
-      "../img/avatar_4.jpg",
-    ],
+    user: {
+      name: "Noemi Rea",
+      avatar: "_io",
+    },
+
+    avatarCounter: 0,
     contacts: [
       {
         name: "Michele",
@@ -92,5 +92,10 @@ var app = new Vue({
         ],
       },
     ],
+  },
+  methods: {
+    setSelectedConversation(index) {
+      this.avatarCounter = index;
+    },
   },
 });
