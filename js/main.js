@@ -3,6 +3,8 @@ Vue.config.devtools = true;
 var app = new Vue({
   el: "#root",
   data: {
+    visibility: ["hide"],
+    lastView: ["visible"],
     user: {
       name: "Noemi Rea",
       avatar: "_io",
@@ -97,17 +99,31 @@ var app = new Vue({
       },
     ],
   },
+
   methods: {
     setSelectedConversation(index) {
       this.avatarCounter = index;
     },
     sendText: function () {
+      this.visibility = "visible";
+      this.lastView = "hide";
       this.contacts[this.avatarCounter].messages.push({
         date: "10/01/2020 15:30:55",
         text: this.newtext,
         status: "sent",
       });
       this.newtext = "";
+      setTimeout(this.receivedText, 1000);
+    },
+
+    receivedText: function () {
+      this.visibility = "hide";
+      this.lastView = "visible";
+      this.contacts[this.avatarCounter].messages.push({
+        date: "10/01/2020 15:30:55",
+        text: "ok",
+        status: "received",
+      });
     },
   },
 });

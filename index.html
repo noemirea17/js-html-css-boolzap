@@ -66,7 +66,8 @@
                         <img :src="'img/avatar' + contacts[avatarCounter].avatar + '.jpg'" alt="">
                         <div class="text">
                             <p>{{contacts[avatarCounter].name}}</p>
-                            <p>ultimo accesso oggi alle</p>
+                            <p :class="lastView">ultimo accesso oggi alle</p>
+                            <p :class="visibility">Sta scrivendo...</p>
 
                         </div>
                     </div>
