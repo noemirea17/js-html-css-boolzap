@@ -84,13 +84,14 @@
                 <div class="chat">
                     <div class="message" :class="(message.status == 'sent') ? 'sent' : 'received'"  v-for="message in contacts[avatarCounter].messages" >
                         <p>{{message.text}}</p>
+                        <span>{{message.date}}</span>
                     </div>
                 </div>
             </section>
             <!-- sezione per scrivere messaggi -->
             <section class="type_text">
                 <i class="far fa-smile"></i>
-                <input type="text" placeholder="Scrivi un messaggio">
+                <input type="text" placeholder="Scrivi un messaggio" v-model="newtext" @keyup.enter="sendText">
                 <i class="fas fa-microphone"></i>
 
             </section>

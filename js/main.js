@@ -1,11 +1,15 @@
+Vue.config.devtools = true;
+
 var app = new Vue({
   el: "#root",
   data: {
     user: {
       name: "Noemi Rea",
       avatar: "_io",
+      visible: true,
     },
 
+    newtext: "",
     avatarCounter: 0,
     contacts: [
       {
@@ -96,6 +100,14 @@ var app = new Vue({
   methods: {
     setSelectedConversation(index) {
       this.avatarCounter = index;
+    },
+    sendText: function () {
+      this.contacts[this.avatarCounter].messages.push({
+        date: "10/01/2020 15:30:55",
+        text: this.newtext,
+        status: "sent",
+      });
+      this.newtext = "";
     },
   },
 });
