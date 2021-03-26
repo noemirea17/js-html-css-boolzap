@@ -3,6 +3,7 @@ Vue.config.devtools = true;
 var app = new Vue({
   el: "#root",
   data: {
+    searchContact: "",
     visibility: ["hide"],
     lastView: ["visible"],
     user: {
@@ -108,7 +109,7 @@ var app = new Vue({
       this.visibility = "visible";
       this.lastView = "hide";
       this.contacts[this.avatarCounter].messages.push({
-        date: "10/01/2020 15:30:55",
+        date: dayjs().format("DD/MM/YYYY hh:mm:ss"),
         text: this.newtext,
         status: "sent",
       });
@@ -120,10 +121,30 @@ var app = new Vue({
       this.visibility = "hide";
       this.lastView = "visible";
       this.contacts[this.avatarCounter].messages.push({
-        date: "10/01/2020 15:30:55",
+        date: dayjs().format("DD/MM/YYYY hh:mm:ss"),
         text: "ok",
         status: "received",
       });
+    },
+    search: function () {
+      this.searchContact = this.searchContact.toLowerCase();
+      console.log(this.searchContact);
+      if (this.searchContact.length == 0) {
+        this.contacts.forEach((element, index) => {
+          this.contacts[index].visible = true;
+        });
+      } else {
+        this.contacts.forEach((element, index) => {
+          for (var i = 0; i < this.searchContact.length; i++) {
+            if (this.searchContact[i] == element.name[i].toLowerCase()) {
+              this.contacts[index].visible = true;
+            } else {
+              this.contacts[index].visible = false;
+              break;
+            }
+          }
+        });
+      }
     },
   },
 });

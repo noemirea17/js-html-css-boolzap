@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <title>Document</title>
@@ -44,13 +45,13 @@
             <!-- sezione ricerca contatti -->
             <section class="search">
                 <label for=""><i class="fas fa-search"></i></label>
-                <input type="text" placeholder="cerca o inizia una nuova chat">
+                <input type="text" placeholder="cerca o inizia una nuova chat" @keyup="search" v-model="searchContact">
 
             </section>
             <!-- sezione lista contatti -->
             <section class="contacts">
                 <ul>
-                    <li v-for="(contact, index) in contacts" @click="setSelectedConversation(index)" :class="(index == avatarCounter) ? 'active' : null"> <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="">{{contact.name}}</li>
+                    <li  v-for="(contact, index) in contacts" @click="setSelectedConversation(index)" :class="[(index == avatarCounter) ? 'active' : null, (contact.visible == true) ? '' : 'hide']"> <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="">{{contact.name}}</li>
                 </ul>
 
             </section>
