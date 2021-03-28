@@ -6,6 +6,8 @@ var app = new Vue({
     searchContact: "",
     visibility: ["hide"],
     lastView: ["visible"],
+    message_menu: ["hide"],
+
     user: {
       name: "Noemi Rea",
       avatar: "_io",
@@ -14,6 +16,7 @@ var app = new Vue({
 
     newtext: "",
     avatarCounter: 0,
+    messageCounter: 0,
     contacts: [
       {
         name: "Michele",
@@ -145,6 +148,13 @@ var app = new Vue({
           }
         });
       }
+    },
+    option(index) {
+      this.messageCounter = this.contacts[this.avatarCounter].messages[index];
+      console.log(this.message_menu);
+
+      console.log(this.messageCounter);
+      console.log(index);
     },
   },
 });

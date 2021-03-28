@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-
     <title>Document</title>
 </head>
 <body>
@@ -84,9 +83,19 @@
             <!-- sezione chat -->
             <section class="main">
                 <div class="chat">
-                    <div class="message" :class="(message.status == 'sent') ? 'sent' : 'received'"  v-for="message in contacts[avatarCounter].messages" >
-                        <p>{{message.text}}</p>
-                        <span>{{message.date}}</span>
+                    <div class="all_message">
+                        <div class="message" :class="(message.status == 'sent') ? 'sent' : 'received'"  v-for="(message, index) in contacts[avatarCounter].messages" >
+                            <i @click="option(index)" class="fas fa-chevron-down"></i>
+                            <p>{{message.text}}</p>
+                            <span>{{message.date}}</span>
+                            <div :class="message_menu" class="dropdown">
+                                <ul>
+                                    <li>informazione</li>
+                                    <li>elimina messaggio</li>
+                                </ul>
+        
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
