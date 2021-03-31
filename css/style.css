@@ -83,6 +83,7 @@ body {
   margin: 5px;
   font-size: 1.3em;
   color: #b1b1b1;
+  cursor: pointer;
 }
 
 /* sezione volume notifiche */
@@ -219,15 +220,24 @@ label {
   background-color: white;
 }
 
+/* dropdown */
+
 .dropdown {
   position: absolute;
   background-color: white;
   top: 30px;
   right: -35px;
+  z-index: 9;
 }
 
-.dropdown li {
+.dropdown div {
   list-style: none;
+  padding: 10px;
+}
+
+.dropdown div:hover {
+  color: lightgrey;
+  cursor: pointer;
 }
 
 /* sezione per scrivere messaggi */
@@ -242,6 +252,7 @@ label {
 .type_text i {
   font-size: 1.5em;
   color: #6b7376;
+  cursor: pointer;
 }
 
 .type_text input {

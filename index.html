@@ -62,11 +62,11 @@
             <!-- prima sezione -->
             <section class="upper_nav">
                 <div class="utente">
-                    <div class="avatar">
+                    <div class="avatar" v-for="(message, index) in user.messages">
                         <img :src="'img/avatar' + contacts[avatarCounter].avatar + '.jpg'" alt="">
                         <div class="text">
                             <p>{{contacts[avatarCounter].name}}</p>
-                            <p :class="lastView">ultimo accesso oggi alle</p>
+                            <p :class="lastView">ultimo accesso oggi alle <span>{{message.date}}</span></p>
                             <p :class="visibility">Sta scrivendo...</p>
 
                         </div>
@@ -88,11 +88,11 @@
                             <i @click="option(index)" class="fas fa-chevron-down"></i>
                             <p>{{message.text}}</p>
                             <span>{{message.date}}</span>
-                            <div :class="message_menu" class="dropdown">
-                                <ul>
-                                    <li>informazione</li>
-                                    <li>elimina messaggio</li>
-                                </ul>
+                            <div v-if="messageActive.show && messageActive.index === index" class="dropdown">
+                                
+                                <div>Informazioni</div>
+                                <div @click="deleteMessage(index)">Elimina messaggio</div>
+                            
         
                             </div>
                         </div>

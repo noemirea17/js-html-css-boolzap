@@ -6,17 +6,25 @@ var app = new Vue({
     searchContact: "",
     visibility: ["hide"],
     lastView: ["visible"],
-    message_menu: ["hide"],
 
     user: {
       name: "Noemi Rea",
       avatar: "_io",
       visible: true,
+      messages: [
+        {
+          date: dayjs().format("hh:mm"),
+        },
+      ],
+    },
+
+    messageActive: {
+      index: false,
+      show: false,
     },
 
     newtext: "",
     avatarCounter: 0,
-    messageCounter: 0,
     contacts: [
       {
         name: "Michele",
@@ -130,31 +138,48 @@ var app = new Vue({
       });
     },
     search: function () {
-      this.searchContact = this.searchContact.toLowerCase();
-      console.log(this.searchContact);
-      if (this.searchContact.length == 0) {
-        this.contacts.forEach((element, index) => {
-          this.contacts[index].visible = true;
-        });
-      } else {
-        this.contacts.forEach((element, index) => {
-          for (var i = 0; i < this.searchContact.length; i++) {
-            if (this.searchContact[i] == element.name[i].toLowerCase()) {
-              this.contacts[index].visible = true;
-            } else {
-              this.contacts[index].visible = false;
-              break;
-            }
-          }
-        });
-      }
+      // this.searchContact = this.searchContact.toLowerCase();
+      // console.log(this.searchContact);
+      // if (this.searchContact.length == 0) {
+      //   this.contacts.forEach((element, index) => {
+      //     this.contacts[index].visible = true;
+      //   });
+      // } else {
+      //   this.contacts.forEach((element, index) => {
+      //     for (var i = 0; i < this.searchContact.length; i++) {
+      //       if (this.searchContact[i] == element.name[i].toLowerCase()) {
+      //         this.contacts[index].visible = true;
+      //       } else {
+      //         this.contacts[index].visible = false;
+      //         break;
+      //       }
+      //     }
+      //   });
+      // }
+
+      this.contacts.forEach((element) => {
+        if (
+          element.name.toLowerCase().includes(this.searchContact.toLowerCase())
+        ) {
+          element.visible = true;
+        } else {
+          element.visible = false;
+        }
+      });
     },
     option(index) {
-      this.messageCounter = this.contacts[this.avatarCounter].messages[index];
-      console.log(this.message_menu);
-
-      console.log(this.messageCounter);
-      console.log(index);
+      if (
+        this.messageActive.index !== false &&
+        this.messageActive.index !== index
+      ) {
+        this.messageActive.show = false;
+        this.messageActive.index = false;
+      }
+      this.messageActive.show = !this.messageActive.show;
+      this.messageActive.index = index;
+    },
+    deleteMessage(index) {
+      this.contacts[this.avatarCounter].messages.splice(index, 1);
     },
   },
 });
