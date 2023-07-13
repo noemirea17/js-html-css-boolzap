@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -50,7 +50,7 @@
             <!-- sezione lista contatti -->
             <section class="contacts">
                 <ul>
-                    <li  v-for="(contact, index) in contacts" @click="setSelectedConversation(index)" :class="[(index == avatarCounter) ? 'active' : null, (contact.visible == true) ? '' : 'hide']"> <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="">{{contact.name}}</li>
+                    <li  v-for="(contact, index) in contacts" @click="setSelectedConversation(index)" :class="[(index == avatarCounter) ? 'active' : null, (contact.visible == true) ? '' : 'hide']"> <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="">{{contact.name}} <span class="last_message_date">{{lastData(index)}}</span><span class="last_message">{{lastMessage(index)}}</span></li>
                 </ul>
 
             </section>
@@ -88,12 +88,9 @@
                             <i @click="option(index)" class="fas fa-chevron-down"></i>
                             <p>{{message.text}}</p>
                             <span>{{message.date}}</span>
-                            <div v-if="messageActive.show && messageActive.index === index" class="dropdown">
-                                
+                            <div v-if="messageActive.show && messageActive.index === index" class="dropdown">                               
                                 <div>Informazioni</div>
-                                <div @click="deleteMessage(index)">Elimina messaggio</div>
-                            
-        
+                                <div @click="deleteMessage(index)">Elimina messaggio</div>       
                             </div>
                         </div>
                     </div>
@@ -104,12 +101,8 @@
                 <i class="far fa-smile"></i>
                 <input type="text" placeholder="Scrivi un messaggio" v-model="newtext" @keyup.enter="sendText">
                 <i class="fas fa-microphone"></i>
-
             </section>
-
-
         </div>
-
     </div>
     <script src="js/main.js"></script>
 </body>

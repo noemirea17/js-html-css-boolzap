@@ -181,5 +181,19 @@ var app = new Vue({
     deleteMessage(index) {
       this.contacts[this.avatarCounter].messages.splice(index, 1);
     },
+    lastData(index) {
+      return this.contacts[index].messages[
+        this.contacts[index].messages.length - 1
+      ].date;
+    },
+    lastMessage(index) {
+      console.log(
+        this.contacts[index].messages[this.contacts[index].messages.length - 1]
+          .message
+      );
+      return this.contacts[index].messages[
+        this.contacts[index].messages.length - 1
+      ].message;
+    },
   },
 });

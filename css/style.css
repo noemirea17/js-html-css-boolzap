@@ -141,6 +141,7 @@ label {
 }
 
 .contacts li {
+  position: relative;
   list-style: none;
   padding: 10px;
   border-top: 0.05em solid lightblue;
@@ -158,6 +159,22 @@ label {
 
 .contacts li.active {
   background-color: lightgrey;
+}
+
+span.last_message_date {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  font-size: 0.8em;
+  color: #6e6d6d;
+}
+
+span.last_message {
+  position: absolute;
+  left: 61px;
+  bottom: 10px;
+  font-size: 0.8em;
+  color: #6e6d6d;
 }
 
 /* sezione chat */
